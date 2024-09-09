@@ -8,16 +8,24 @@ namespace StudentManagement
 {
     internal class Person
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string? Address { get; set; }
-        public double? Height { get; set; }
-        public double? Weight { get; set; }
+        public static int nextId = 0;
+        private int id;
+        private string name;
+        private DateTime birthDate;
+        private string address;
+        private double height;
+        private double weight;
 
-        public Person(int id, string name, DateTime birthDate, string address, double height, double weight)
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
+        public DateTime BirthDate { get => birthDate; set => birthDate = value; }
+        public string Address { get => address;set => address = value; }
+        public double Height { get => height;set => height = value; }
+        public double Weight { get => weight; set => weight = value; }
+
+       protected Person(string name, DateTime birthDate, string address, double height, double weight)
         {
-            Id = id;
+            nextId = nextId + 1;
             Name = name;
             BirthDate = birthDate;
             Address = address;
@@ -25,13 +33,19 @@ namespace StudentManagement
             Weight = weight;
         }
 
-        public Person()
+        protected Person()
         {
         }
 
         public override string? ToString()
         {
-            return $"Id: {Id} ;  Name: {Name};    BirthDate:  {BirthDate};    Address: {Address};   Height: {Height};   Weight: {Weight}";
+            return $"Id: {Id} ;" +
+                $"  Name: {Name};" +
+                $"    BirthDate:" +
+                $"  {BirthDate};" +
+                $"    Address: {Address};" +
+                $"   Height: {Height};" +
+                $"   Weight: {Weight}";
         }
     }
 }

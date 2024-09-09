@@ -9,21 +9,27 @@ namespace StudentManagement
 {
     internal class Student : Person
     {
-        public string StudentId { get; set; }
-        public string School { get; set; }
+        private string studentId;
+        private string school;
+        private int startYear;
+        private double gpa;
 
-        public int StartYear { get; set; }
+        public string StudentId { get => studentId; set => studentId = value; }
+        public string School { get => school; set => school = value; }
+        public int StartYear { get => startYear; set => startYear = value; }
+        public double GPA { get => gpa; set => gpa = value; }
 
-        public double GPA { get; set; }
 
+        public Student() : base() { }
 
-        public Student() { }
-
-        public Student(int id, string name, DateTime birthDate, string address, double height, double width) : base(id, name, birthDate, address, height, width)
+        public Student(string name, DateTime birthDate,string address, double height, double weight, string  studentId, string school, int startYear, double gpa) : base(name,birthDate,address,height,weight)
         {
-
+            StudentId = studentId;
+            School = school;
+            StartYear = startYear;
+            GPA = gpa;
         }
-
+       
         public override string? ToString()
         {
             return $"{base.ToString()}\n StudentId: {StudentId}; School: {School}; StartYear: {StartYear}; GPA: {GPA}";
